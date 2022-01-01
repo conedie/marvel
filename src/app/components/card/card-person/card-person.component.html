@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-6 mt-3" *ngFor="let item of characters">
+    <div class="col-sm-6 mt-3" *ngFor="let item of characters | paginate: {itemsPerPage: 10, currentPage: p}">
         <div class="card">
             <div class="card-body">
 
@@ -10,14 +10,63 @@
                     <div class="col-sm-6">
                         <h5 class="card-title">{{item.name}}</h5>
                         <p class="card-text">{{item.description}}</p>
-                        <a href="#" class="btn btn-primary">View More</a>
+                        <button type="button" class="btn btn-primary" (click)="openModalCharacter()" data-toggle="modal" data-target=".modalFav">View More</button>
                     </div>
                 </div>
 
                 <h5 class="card-title-second mt-2">Related Comics</h5>
                 <div class="row">
-                    <div class="col-sm-6">
-                        <p class="card-text" *ngFor="let comic of item.comics.items">{{comic.name}}</p>
+                    <div class="col-sm-6" *ngFor="let comic of item.comics.items">
+                        <a #comic class="card-text" href="#" (click)="openModalComics(comic.resourceURI)" data-toggle="modal" data-target=".modalComic">{{comic.name}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-sm-12 text-center">
+        <pagination-controls class="my-pagination" (pageChange)="p = $event">
+        </pagination-controls>
+    </div>
+</div>
+
+
+<div class="modal fade modalFav" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            ...
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modalComic" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="card justify-content-center">
+                <div class="card-body">
+                    <div class="row" *ngIf="showComic">
+                        <div class="col-sm-12 col-lg-6">
+                            <img src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}} " class="card-img-top" alt="...">
+                        </div>
+                        <div class="col-sm-12 col-lg-6 mt-3">
+                            <h5 class="card-title title-comic">{{comic.title}}</h5>
+                            <p class="card-text p-comic">{{comic.description}}</p>
+                        </div>
+                    </div>
+                    <div class="row text-center mt-3">
+                        <div class="col-sm-12 col-lg-6 add mt-3">
+                            <a href="#" class="title-comic">
+                                <img src="../../../../assets/btn-favourites-default.png" width="40" height="40" class="d-inline-block align-top" alt=""> ADD TO FAVOURITES
+                            </a>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 added mt-3">
+                            <a href="#" class="title-comic ">
+                                <img src="../../../../assets/shopping-cart-primary.png" width="40" height="40" class="d-inline-block align-top" alt=""> BUY FOR {{price}}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

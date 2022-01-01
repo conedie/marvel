@@ -13,3 +13,29 @@
     font-weight: 500;
     font-size: larger;
 }
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: red;
+}
+
+.title-comic {
+    font-size: x-large;
+}
+
+.p-comic {
+    font-size: medium;
+}
+
+.add {
+    background-color: rgb(240, 240, 240);
+}
+
+.added {
+    background-color: rgb(220, 220, 220);
+    ;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}

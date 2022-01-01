@@ -8,13 +8,12 @@
         <div class="col-sm-12 col-lg-4 col-xl-4">
             <form>
                 <div class="form-group">
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <select #orderby class="form-control" id="exampleFormControlSelect1" (change)="showData(orderby.value)">
                     <option selected>Sort by</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option value="orderBy=name">Name Asc</option>
+                    <option value="orderBy=-name">Name Des</option>
+                    <option value="orderBy=modified">Modified Asc</option>
+                    <option value="orderBy=-modified">Modified Des</option>
                 </select>
                 </div>
             </form>
@@ -24,8 +23,10 @@
     <div class="row mt-2">
         <div class="col-sm-12 col-lg-10 col-xl-10 color-right">
 
-            <app-card-person [characters]="character"></app-card-person>
-
+            <div *ngIf="managerDataService.showTextSearchEmpty" class="text-center">
+                <h1>Not found... </h1>
+            </div>
+            <app-card-person [characters]="managerDataService.character"></app-card-person>
         </div>
 
         <div class="col-sm-12 col-lg-2 col-xl-2 color-left">
