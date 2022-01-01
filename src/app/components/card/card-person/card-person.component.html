@@ -1,26 +1,25 @@
-<div class="card">
-    <div class="card-body">
+<div class="row">
+    <div class="col-sm-6 mt-3" *ngFor="let item of characters">
+        <div class="card">
+            <div class="card-body">
 
-        <div class="row">
-            <div class="col-sm-6">
-                <img src="/assets/perfil.jpg" class="card-img-top rounded-circle" alt="...">
-            </div>
-            <div class="col-sm-6">
-                <h5 class="card-title">Nombre Personaje</h5>
-                <p class="card-text">Descripción del personaje</p>
-                <a href="#" class="btn btn-primary">View More</a>
-            </div>
-        </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}" class="card-img-top rounded-circle" alt="...">
+                    </div>
+                    <div class="col-sm-6">
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <p class="card-text">{{item.description}}</p>
+                        <a href="#" class="btn btn-primary">View More</a>
+                    </div>
+                </div>
 
-        <h5 class="card-title-second mt-2">Nombre Personaje</h5>
-        <div class="row">
-            <div class="col-sm-6">
-                <p class="card-text">Descripción del personaje</p>
-                <p class="card-text">Descripción del personaje</p>
-            </div>
-            <div class="col-sm-6">
-                <p class="card-text">Descripción del personaje</p>
-                <p class="card-text">Descripción del personaje</p>
+                <h5 class="card-title-second mt-2">Related Comics</h5>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="card-text" *ngFor="let comic of item.comics.items">{{comic.name}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

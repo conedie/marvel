@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MarvelService } from '../../../services/marvel.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  character: any;
+
+  constructor( private mavelService: MarvelService) {
+    this.mavelService.getCharacters()
+    .subscribe( (data: any) => {
+      this.character = data;
+      console.log(this.character);
+    });
+  }
 
   ngOnInit(): void {
   }
+
 
 }

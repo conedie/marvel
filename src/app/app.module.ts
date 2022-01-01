@@ -8,6 +8,8 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { CardPersonComponent } from './components/card/card-person/card-person.component';
 import { ImgLikeComponent } from './components/img/img-like/img-like.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ImgLikeComponent } from './components/img/img-like/img-like.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
