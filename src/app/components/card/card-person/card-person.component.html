@@ -10,7 +10,7 @@
                     <div class="col-sm-6">
                         <h5 class="card-title">{{item.name}}</h5>
                         <p class="card-text">{{item.description}}</p>
-                        <button type="button" class="btn btn-primary" (click)="openModalCharacter(item)" data-toggle="modal" data-target=".modalFav">View More</button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modalFav"> <a class="text-white" href="{{item.urls[0].url}}" target="_blank">View More</a></button>
                     </div>
                 </div>
 
@@ -29,15 +29,6 @@
     <div class="col-sm-12 text-center">
         <pagination-controls class="my-pagination" (pageChange)="p = $event">
         </pagination-controls>
-    </div>
-</div>
-
-
-<div class="modal fade modalFav" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            ...
-        </div>
     </div>
 </div>
 
