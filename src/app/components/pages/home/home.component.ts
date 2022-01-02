@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MarvelService } from '../../../services/marvel.service';
 import { ManagerDataService } from '../../../services/manager-data.service';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-home',
