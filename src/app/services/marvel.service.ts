@@ -15,7 +15,7 @@ export class MarvelService {
 
   getQuery( query: string ) {
 
-    const url = `http://gateway.marvel.com/v1/public/${ query }ts=1&apikey=${ environment.publicKey }&hash=${ environment.hash }`;
+    const url = `https://gateway.marvel.com/v1/public/${ query }ts=1&apikey=${ environment.publicKey }&hash=${ environment.hash }`;
 
     return this.http.get(url);
 

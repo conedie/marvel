@@ -35,7 +35,7 @@ export class CardPersonComponent implements OnInit {
       });
   }
   openModalComics(urlComic: string): void{
-    this.marvelService.getComic(urlComic)
+    this.marvelService.getComic(urlComic.replace('http','https'))
       .subscribe(data=> {
         this.showComic = true;
         this.comic = data;
