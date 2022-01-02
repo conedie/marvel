@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MarvelService } from '../../../services/marvel.service';
 import { ManagerDataService } from '../../../services/manager-data.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,10 @@ export class HomeComponent implements OnInit {
 
   constructor( private mavelService: MarvelService, public managerDataService: ManagerDataService) {
     this.showData(this.managerDataService.filter);
+    this.randomFav();
+    setTimeout(() => {
+      this.updateFavourites();
+    }, 2000);
   }
 
   ngOnInit(): void {
@@ -41,6 +46,29 @@ export class HomeComponent implements OnInit {
     } else {
       this.managerDataService.showTextSearchEmpty = true;
     }
+  }
+
+  randomFav(): void {
+    const item: { path: string; title: any; }[] = [];
+    this.mavelService.getComicsAll()
+      .subscribe( data => {
+        for (var i = 0; i <= 2; i++) {
+          const key = this.getRandomInt(0,19);
+          item.push( { path:data[key].thumbnail.path + '.' + data[key].thumbnail.extension , title:data[key].title  } );
+        }
+
+        if (!localStorage.getItem('fav')) {
+          localStorage.setItem('fav', JSON.stringify(item))
+        }
+      });
+  }
+
+  getRandomInt(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  updateFavourites(): void{
+    this.managerDataService.storage = JSON.parse(localStorage.getItem('fav') || '{}');
   }
 
 }

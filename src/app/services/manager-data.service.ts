@@ -9,6 +9,7 @@ export class ManagerDataService {
   filter: string = 'orderBy=name';
   search: string = '';
   showTextSearchEmpty: boolean = false;
+  storage : { path: string; title: any; }[] = [];
 
   constructor() { }
 }

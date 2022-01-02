@@ -28,14 +28,28 @@
 
 .add {
     background-color: rgb(240, 240, 240);
+    height: 80px;
+}
+
+.font-red {
+    color: red;
 }
 
 .added {
+    background-color: rgb(49, 40, 39);
+    height: 80px;
+}
+
+.buy {
     background-color: rgb(220, 220, 220);
-    ;
+    height: 80px;
 }
 
 a {
     text-decoration: none;
     color: black;
+}
+
+.link-red:hover {
+    color: red;
 }

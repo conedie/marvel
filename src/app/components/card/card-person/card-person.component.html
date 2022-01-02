@@ -10,14 +10,14 @@
                     <div class="col-sm-6">
                         <h5 class="card-title">{{item.name}}</h5>
                         <p class="card-text">{{item.description}}</p>
-                        <button type="button" class="btn btn-primary" (click)="openModalCharacter()" data-toggle="modal" data-target=".modalFav">View More</button>
+                        <button type="button" class="btn btn-primary" (click)="openModalCharacter(item)" data-toggle="modal" data-target=".modalFav">View More</button>
                     </div>
                 </div>
 
                 <h5 class="card-title-second mt-2">Related Comics</h5>
                 <div class="row">
                     <div class="col-sm-6" *ngFor="let comic of item.comics.items">
-                        <a #comic class="card-text" href="#" (click)="openModalComics(comic.resourceURI)" data-toggle="modal" data-target=".modalComic">{{comic.name}}</a>
+                        <a #comic class="card-text link-red" href="#" (click)="openModalComics(comic.resourceURI)" data-toggle="modal" data-target=".modalComic">{{comic.name}}</a>
                     </div>
                 </div>
             </div>
@@ -56,13 +56,18 @@
                             <p class="card-text p-comic">{{comic.description}}</p>
                         </div>
                     </div>
-                    <div class="row text-center mt-3">
-                        <div class="col-sm-12 col-lg-6 add mt-3">
-                            <a href="#" class="title-comic">
+                    <div class="row mt-3 ">
+                        <div class="col-sm-12 col-lg-6 add d-flex align-items-center justify-content-center" *ngIf="!showAdded">
+                            <a href="#" class="title-comic" (click)="addFavComic()">
                                 <img src="../../../../assets/btn-favourites-default.png" width="40" height="40" class="d-inline-block align-top" alt=""> ADD TO FAVOURITES
                             </a>
                         </div>
-                        <div class="col-sm-12 col-lg-6 added mt-3">
+                        <div class="col-sm-12 col-lg-6 added d-flex align-items-center justify-content-center" *ngIf="showAdded">
+                            <a class="title-comic font-red">
+                                <img src="../../../../assets/btn-favourites-primary.png" width="40" height="40" class="d-inline-block align-top" alt=""> ADDED TO FAVOURITES
+                            </a>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 buy d-flex align-items-center justify-content-center">
                             <a href="#" class="title-comic ">
                                 <img src="../../../../assets/shopping-cart-primary.png" width="40" height="40" class="d-inline-block align-top" alt=""> BUY FOR {{price}}
                             </a>

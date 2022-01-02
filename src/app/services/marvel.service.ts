@@ -49,5 +49,19 @@ export class MarvelService {
 
   }
 
+  getComicsAll() {
+
+    return this.getQuery(`comics?`)
+    .pipe( map( (data: any) => data.data.results ));
+
+  }
+
+  getCharacterStory(idCharacter: any) {
+
+    return this.getQuery(`characters/${idCharacter}?`)
+    .pipe( map( (data: any) => data.data.results ));
+
+  }
+
 
 }

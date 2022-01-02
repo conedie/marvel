@@ -1,11 +1,11 @@
-<div class="card mt-2">
-    <a class="text-right" href="#">
+<div class="card mt-2" *ngFor="let item of itemsFav">
+    <a class="text-right" href="#" (click)="removeFav(item)">
         <img src="/assets/btn-delete.png" width="30" height="30" class="d-inline-block align-top" alt="">
     </a>
     <div class="card-body">
         <div class="text-center">
-            <img src="/assets/perfil.jpg" class="card-img-top" alt="...">
-            <p class="p-primary">Title movie</p>
+            <img src="{{item.path}}" class="card-img-top" alt="...">
+            <p class="p-primary">{{item.title}}</p>
         </div>
     </div>
 </div>
