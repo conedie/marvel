@@ -49,10 +49,21 @@ export class HomeComponent implements OnInit {
 
   randomFav(): void {
     const item: { path: string; title: any; }[] = [];
+    let numRandom: number[] = [];
+    let ok: boolean = false;
+    let key: number;
     this.mavelService.getComicsAll()
       .subscribe( data => {
         for (var i = 0; i <= 2; i++) {
-          const key = this.getRandomInt(0,19);
+          ok = false;
+          do {
+            key = this.getRandomInt(0,19);
+            if ( numRandom.indexOf(key) == -1) {
+              numRandom.push(key);
+              ok = true;
+            }
+
+          } while (ok = false);
           item.push( { path:data[key].thumbnail.path + '.' + data[key].thumbnail.extension , title:data[key].title  } );
         }
 
